@@ -11,7 +11,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #ccc; line-height: 1.6; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem 1.5rem; overflow: hidden; background: #0d0d0d; }
 
-        .bg { position: absolute; inset: 0; background: url('./assets/hero.webp') center/cover no-repeat; animation: ken-burns 30s ease-in-out infinite alternate; }
+        .bg { position: absolute; inset: 0; background: url('./assets/hero.webp') center/contain no-repeat #0d0d0d; animation: ken-burns 30s ease-in-out infinite alternate; }
         .bg::after { content: ''; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.5); }
 
         @keyframes ken-burns {
@@ -38,7 +38,7 @@
     </style>
 </head>
 <body>
-    <div id="parallax" style="position:fixed;inset:-40px;z-index:-2;">
+    <div id="parallax" style="position:fixed;inset:-40px;z-index:-2;transition:transform 0.15s ease-out;">
         <div class="bg"></div>
     </div>
     <div class="card">
