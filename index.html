@@ -7,7 +7,14 @@
     <meta name="description" content="Indie games with a penchant for open source and knowledge sharing.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #ccc; line-height: 1.6; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem 1.5rem; background: url('./assets/hero.webp') center/cover no-repeat fixed #0d0d0d; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #ccc; line-height: 1.6; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem 1.5rem; overflow: hidden; background: #0d0d0d; }
+
+        .bg { position: fixed; inset: -30px; background: url('./assets/hero.webp') center/cover no-repeat; animation: ken-burns 45s ease-in-out infinite alternate; transition: transform 0.3s ease-out; z-index: -1; }
+
+        @keyframes ken-burns {
+            0%   { transform: scale(1.05) translate(0, 0); }
+            100% { transform: scale(1.12) translate(-1%, -0.5%); }
+        }
 
         .card { background: rgba(0, 0, 0, 0.92); border-radius: 24px; padding: 3rem 2.5rem; text-align: center; max-width: 480px; width: 100%; }
 
@@ -28,6 +35,7 @@
     </style>
 </head>
 <body>
+    <div class="bg" id="bg"></div>
     <div class="card">
         <img class="icon" src="./assets/icon.webp" alt="Cosmic Canopy" width="80" height="80">
         <h1>Cosmic Canopy Games</h1>
@@ -47,5 +55,18 @@
 
         <footer>&copy; 2025–2026 Cosmic Canopy Studio</footer>
     </div>
+    <script>
+        const bg = document.getElementById('bg');
+        document.addEventListener('mousemove', e => {
+            const x = (e.clientX / innerWidth - 0.5) * 15;
+            const y = (e.clientY / innerHeight - 0.5) * 15;
+            bg.style.transform = `translate(${-x}px, ${-y}px) scale(1.08)`;
+            bg.style.animationPlayState = 'paused';
+        });
+        document.addEventListener('mouseleave', () => {
+            bg.style.transform = '';
+            bg.style.animationPlayState = 'running';
+        });
+    </script>
 </body>
 </html>
